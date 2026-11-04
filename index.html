@@ -120,7 +120,59 @@ textarea{font-family:ui-monospace,monospace!important;font-size:12px!important;m
 .intro{border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin-top:8px;background:var(--bg2)}
 .intro .l{font-family:var(--cap);font-weight:700}
 a{color:var(--gold2)}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media (prefers-reduced-motion:reduce){.wrap *,.qz *{animation:none!important;transition:none!important}}
+#intro{position:fixed;inset:0;z-index:100;background:#050203;overflow:hidden;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:opacity .9s ease,transform .9s ease}
+#intro.out{opacity:0;transform:scale(1.08);pointer-events:none}
+#intro .vig{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 42%,rgba(120,20,26,.35) 0%,rgba(5,2,3,0) 55%),radial-gradient(ellipse at center,transparent 40%,#000 100%);opacity:0;animation:iFade 3s 1.2s forwards}
+#intro .rays{position:absolute;left:50%;top:-30%;width:180vmax;height:180vmax;transform:translateX(-50%);background:repeating-conic-gradient(from 160deg at 50% 0%,rgba(255,226,150,.0) 0deg,rgba(255,226,150,.07) 3deg,rgba(255,226,150,0) 7deg,rgba(255,226,150,0) 13deg);-webkit-mask:radial-gradient(circle at 50% 0%,#000 10%,transparent 60%);mask:radial-gradient(circle at 50% 0%,#000 10%,transparent 60%);opacity:0;animation:iFade 4s 1.6s forwards,iSway 14s 1.6s ease-in-out infinite alternate}
+#intro .stage{position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;padding:0 20px;text-align:center}
+#intro svg.arch{width:min(74vw,320px);height:auto;overflow:visible}
+#intro .ln{fill:none;stroke:#c9a24a;stroke-width:2.2;stroke-dasharray:1400;stroke-dashoffset:1400;animation:iDraw 2.4s 1.4s cubic-bezier(.6,0,.3,1) forwards}
+#intro .ln.t{stroke-width:1.2;opacity:.7;animation-delay:2.1s}
+#intro .pet{opacity:0;transform-box:fill-box;transform-origin:center;animation:iPet .7s forwards;filter:drop-shadow(0 0 6px currentColor)}
+#intro .core{opacity:0;animation:iFade 1s 3.5s forwards}
+#intro .glow{opacity:0;animation:iGlow 3s 3.4s ease-in-out forwards}
+#intro .ttl{font-family:Cinzel,Georgia,serif;font-weight:900;font-size:clamp(40px,12vw,64px);letter-spacing:.32em;margin-right:-.32em;color:#e2c26f;text-shadow:0 0 24px rgba(226,194,111,.45),0 2px 0 #5a3b1c;opacity:0;filter:blur(10px);animation:iTitle 1.6s 3.9s forwards}
+#intro .sub{font-family:'EB Garamond',Georgia,serif;font-style:italic;font-size:19px;color:#e8dcc0;opacity:0;animation:iFade 1.2s 4.7s forwards}
+#intro .rub{font-family:Cinzel,Georgia,serif;font-size:11px;letter-spacing:.3em;color:#c9b48a;opacity:0;animation:iFade 1.2s 5.1s forwards}
+#intro .go{margin-top:18px;min-height:56px;padding:0 18px;border:2px solid #c9a24a;border-radius:8px;background:#7a1018;color:#f7ecd0;font-family:Cinzel,Georgia,serif;font-weight:900;font-size:15px;letter-spacing:.14em;opacity:0;transform:translateY(8px);animation:iUp .9s 5.6s forwards,iPulse 2.4s 6.6s ease-in-out infinite;cursor:pointer}
+#intro .go small{display:block;font-family:'EB Garamond',Georgia,serif;font-weight:400;font-style:italic;letter-spacing:0;font-size:14px;opacity:.85;text-transform:none}
+#intro .cnd{position:absolute;bottom:5%;display:flex;flex-direction:column;align-items:center;opacity:0;animation:iFade 1.4s .9s forwards}
+#intro .cnd.l{left:4%}#intro .cnd.r{right:4%}
+#intro .cnd i{width:12px;height:22px;border-radius:50% 50% 45% 45%/60% 60% 40% 40%;background:radial-gradient(circle at 50% 70%,#fff6c8 0%,#f2b33d 45%,rgba(242,120,40,.0) 75%);box-shadow:0 0 30px 10px rgba(242,179,61,.35);animation:iFlick 1.3s infinite ease-in-out;transform-origin:50% 100%}
+#intro .cnd b{display:block;width:14px;height:clamp(50px,11vh,100px);margin-top:2px;background:linear-gradient(90deg,#d8ccad,#f3ead4 45%,#c9bc98);border-radius:2px}
+#intro .cnd u{display:block;width:34px;height:8px;background:#c9a24a;border-radius:2px;text-decoration:none}
+#intro .dust{position:absolute;width:3px;height:3px;border-radius:50%;background:#f3dc9c;opacity:0;animation:iDust linear infinite}
+#intro .door{position:absolute;top:0;bottom:0;width:50.5%;z-index:3;background:repeating-linear-gradient(90deg,#2b1609 0 46px,#21100606 46px 48px,#331c0c 48px 94px),#2b1609;box-shadow:inset 0 0 80px rgba(0,0,0,.7);animation-duration:2.3s;animation-delay:.5s;animation-fill-mode:forwards;animation-timing-function:cubic-bezier(.5,0,.25,1)}
+#intro .door:before{content:"";position:absolute;inset:6% 9%;border:3px solid #6b4a1e;border-radius:6px;box-shadow:inset 0 0 0 6px rgba(0,0,0,.25)}
+#intro .door:after{content:"";position:absolute;inset:0;background:radial-gradient(circle,#8a6a2a 3px,transparent 4px) 0 0/48px 64px;opacity:.55}
+#intro .door.l{left:0;transform-origin:left center;animation-name:iDoorL;border-right:3px solid #120a04}
+#intro .door.r{right:0;transform-origin:right center;animation-name:iDoorR;border-left:3px solid #120a04}
+#intro .door .x{position:absolute;top:50%;width:23px;height:160px;transform:translateY(-50%);z-index:2}
+#intro .door.l .x{right:-2px}#intro .door.r .x{left:-2px}
+#intro .door .x:before{content:"";position:absolute;top:0;bottom:0;width:8px;background:linear-gradient(90deg,#b08a3a,#e2c26f,#b08a3a)}
+#intro .door .x:after{content:"";position:absolute;top:44px;height:16px;width:23px;background:linear-gradient(#b08a3a,#e2c26f,#b08a3a)}
+#intro .door.l .x:before{right:0}#intro .door.r .x:before{left:0}
+#intro .skip{position:absolute;bottom:calc(14px + env(safe-area-inset-bottom));left:0;right:0;text-align:center;font-family:Cinzel,serif;font-size:10px;letter-spacing:.3em;color:rgba(201,180,138,.5);z-index:4;animation:iFade 1s 1s backwards,iHide .6s 5.4s forwards}
+@keyframes iHide{to{opacity:0}}
+#intro.done *{animation-delay:0s!important;animation-duration:.01s!important}
+#intro.done .door{display:none}
+#intro.done .go{animation:iPulse 2.4s ease-in-out infinite!important;opacity:1;transform:none}
+#intro.done .skip{display:none}
+@keyframes iFade{to{opacity:1}}
+@keyframes iSway{from{transform:translateX(-50%) rotate(-4deg)}to{transform:translateX(-50%) rotate(4deg)}}
+@keyframes iDraw{to{stroke-dashoffset:0}}
+@keyframes iPet{0%{opacity:0;transform:scale(.4)}70%{opacity:1;transform:scale(1.12)}100%{opacity:1;transform:scale(1)}}
+@keyframes iGlow{0%{opacity:0}40%{opacity:.9}100%{opacity:.45}}
+@keyframes iTitle{to{opacity:1;filter:blur(0);letter-spacing:.22em;margin-right:-.22em}}
+@keyframes iUp{to{opacity:1;transform:none}}
+@keyframes iPulse{0%,100%{box-shadow:0 0 0 0 rgba(226,194,111,.0)}50%{box-shadow:0 0 22px 2px rgba(226,194,111,.45)}}
+@keyframes iFlick{0%,100%{transform:scale(1) rotate(-1deg)}30%{transform:scale(.92,1.08) rotate(2deg)}60%{transform:scale(1.04,.95) rotate(-2deg)}}
+@keyframes iDust{0%{opacity:0;transform:translate(0,0)}15%{opacity:.8}100%{opacity:0;transform:translate(var(--dx),-60vh)}}
+@keyframes iDoorL{to{transform:perspective(900px) rotateY(-105deg)}}
+@keyframes iDoorR{to{transform:perspective(900px) rotateY(105deg)}}
+@media (prefers-reduced-motion:reduce){#intro *{animation-delay:0s!important;animation-duration:.01s!important}#intro .door{display:none}}
+
 </style>
 </head>
 <body>
@@ -418,6 +470,7 @@ function vOrdo(){return header()+`<h2>ORDO · ASETUKSET</h2>
  <div class="field"><span class="lbl">HAHMO</span><div class="chips">${Object.keys(AVATARS).map(k=>`<button class="chip ${S.av===k?'on':''}" data-a="av" data-v="${k}" style="display:flex;align-items:center;gap:6px">${AVATARS[k].svg.replace('width="40" height="40"','width="26" height="26"')}${AVATARS[k].n}</button>`).join('')}</div></div>
  <div class="field"><label class="lbl" for="exd">TENTTIPÄIVÄ</label><input id="exd" type="date" value="${esc(S.exam||'')}" data-f="exam"></div>
  <div class="field"><span class="lbl">ÄÄNET</span><div class="chips"><button class="chip ${S.snd?'on':''}" data-a="snd">Kellot ja miekat ${S.snd?'päällä':'pois'}</button><button class="chip ${S.organ?'on':''}" data-a="organ">Urku taustalla ${S.organ?'päällä':'pois'}</button><button class="chip" data-a="testv">Kokeile ääntämistä</button></div><div class="mute" style="font-size:14px">Ääntäminen on kirkkolatinaa italialaisella puheäänellä. Jos laitteessa ei ole italian ääntä, se lisätään puhelimen asetuksista (Saavutettavuus → Puhuttu sisältö).</div></div>
+ <div class="field"><span class="lbl">ALKUINTRO</span><div class="chips">${[['day','Kerran päivässä'],['always','Aina'],['off','Pois']].map(([k,t])=>`<button class="chip ${(S.intro||'day')===k?'on':''}" data-a="intro" data-v="${k}">${t}</button>`).join('')}<button class="chip" data-a="introshow">Näytä nyt</button></div></div>
  <h2>SIIRTOKOODI</h2><div class="mute" style="font-size:15px">Edistyminen tallentuu tähän laitteeseen. Toiselle laitteelle siirto tehdään kopioimalla koodi ja liittämällä se siellä tähän samaan kohtaan.</div>
  <div class="row" style="margin-top:10px"><button class="btn2" data-a="exp">Luo koodi</button><button class="btn2" data-a="imp">Liitä koodi</button></div>
  <h2>ASENNA PUHELIMEEN</h2><div class="card" style="font-size:16px"><b>iPhone:</b> avaa Safarissa, paina Jaa-nappia ja valitse <i>Lisää Koti-valikkoon</i>.<br><b>Android:</b> avaa Chromessa, paina ⋮ ja valitse <i>Asenna sovellus</i>.<br><span class="mute">Asennettuna peli toimii myös ilman nettiä.</span></div>
@@ -573,6 +626,8 @@ document.addEventListener('click',e=>{
   case 'av':S.av=el.dataset.v;save();render();break;
   case 'snd':S.snd=!S.snd;save();render();if(S.snd)SND.ok();break;
   case 'organ':S.organ=!S.organ;save();render();if(S.organ){organOn(true);setTimeout(()=>organOn(false),2500)}break;
+  case 'intro':S.intro=el.dataset.v;save();render();break;
+  case 'introshow':showIntro();break;
   case 'testv':speak('Pater noster, qui es in caelis, sanctificetur nomen tuum');break;
   case 'exp':exportCode();break;
   case 'imp':e.preventDefault();sheet(`<div class="cap" style="color:var(--gold);font-weight:700">LIITÄ SIIRTOKOODI</div><textarea id="ic" style="width:100%;margin-top:10px;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:10px" placeholder="VG1…"></textarea><div class="row" style="margin-top:10px"><button class="btn2" data-a="close">Peruuta</button><button class="btn2" data-a="impgo" style="border-color:var(--gold)">Siirrä</button></div>`);break;
@@ -592,7 +647,45 @@ document.addEventListener('change',e=>{const f=e.target.dataset&&e.target.datase
 document.addEventListener('keydown',e=>{if(!QZ||!$('#qz'))return;if(document.activeElement&&document.activeElement.tagName==='INPUT')return;const n=parseInt(e.key,10);if(n>=1&&n<=5){const b=document.querySelectorAll('#opts .opt')[n-1];if(b&&!b.disabled)b.click()}if(e.key==='Enter'||e.key===' '){const b=document.querySelector('[data-a="next"],[data-a="flip"]');if(b){e.preventDefault();b.click()}}});
 document.addEventListener('visibilitychange',()=>{if(document.hidden){save();organOn(false)}});
 
+/* ---------- intro ---------- */
+function introHtml(){
+ const n=11,cx=160,cy=168,R=56,cols=['#c1121f','#1f5fbf','#e2b33d','#c1121f','#2f8f4e','#1f5fbf','#c1121f','#e2b33d','#7d3c98','#1f5fbf','#c1121f'];
+ let pet='';for(let k=0;k<n;k++){const a=k/n*Math.PI*2-Math.PI/2;const x=(cx+R*Math.cos(a)).toFixed(1),y=(cy+R*Math.sin(a)).toFixed(1);pet+=`<circle class="pet" cx="${x}" cy="${y}" r="17" fill="${cols[k]}" color="${cols[k]}" stroke="#e2c26f" stroke-width="1.5" style="animation-delay:${(2.9+k*.09).toFixed(2)}s"/>`;}
+ let tr='';for(let k=0;k<n;k++){const a=k/n*Math.PI*2-Math.PI/2+Math.PI/n;tr+=`<path class="ln t" d="M${(cx+24*Math.cos(a)).toFixed(1)} ${(cy+24*Math.sin(a)).toFixed(1)}L${(cx+82*Math.cos(a)).toFixed(1)} ${(cy+82*Math.sin(a)).toFixed(1)}"/>`}
+ let dust='';for(let k=0;k<26;k++)dust+=`<span class="dust" style="left:${rnd(100)}%;top:${55+rnd(45)}%;--dx:${rnd(60)-30}px;animation-duration:${7+rnd(8)}s;animation-delay:${(1.5+Math.random()*6).toFixed(1)}s"></span>`;
+ return `<div class="vig"></div><div class="rays"></div>${dust}
+ <div class="cnd l"><i></i><b></b><u></u></div><div class="cnd r"><i></i><b></b><u></u></div>
+ <div class="stage">
+  <svg class="arch" viewBox="0 0 320 380" aria-hidden="true">
+   <defs><radialGradient id="ig" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#ffd98a" stop-opacity=".7"/><stop offset="1" stop-color="#ffd98a" stop-opacity="0"/></radialGradient></defs>
+   <circle class="glow" cx="${cx}" cy="${cy}" r="120" fill="url(#ig)"/>
+   <path class="ln" d="M40 380V176C40 92 92 40 160 14 228 40 280 92 280 176V380"/>
+   <path class="ln t" d="M58 380V180C58 104 104 60 160 36 216 60 262 104 262 180V380"/>
+   <path class="ln" d="M160 14V-26M146 -12H174"/>
+   <circle class="ln" cx="${cx}" cy="${cy}" r="86"/>
+   ${tr}${pet}
+   <g class="core"><circle cx="${cx}" cy="${cy}" r="22" fill="#120809" stroke="#e2c26f" stroke-width="2"/><rect x="${cx-3}" y="${cy-13}" width="6" height="26" fill="#e2c26f"/><rect x="${cx-10}" y="${cy-6}" width="20" height="6" fill="#e2c26f"/></g>
+   <path class="ln t" d="M80 380V290M120 380V280M200 380V280M240 380V290M80 290Q100 262 120 280M200 280Q220 262 240 290"/>
+  </svg>
+  <div class="ttl">VVLGATA</div>
+  <div class="sub">In nōmine Patris et Fīliī et Spīritūs Sānctī</div>
+  <div class="rub">LATINA I · AD MAIOREM DEI GLORIAM</div>
+  <button class="go" data-intro="go">INTROIBO AD ALTARE DEI<small>Astun Jumalan alttarin eteen</small></button>
+ </div>
+ <div class="door l"><span class="x"></span></div><div class="door r"><span class="x"></span></div>
+ <div class="skip">NAPAUTA OHITTAAKSESI</div>`}
+function chant(){const a=ac();if(!a||!S.snd)return;const t=a.currentTime;const g=a.createGain();g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.06,t+.6);g.gain.linearRampToValueAtTime(.05,t+2.2);g.gain.linearRampToValueAtTime(0,t+3.4);const lp=a.createBiquadFilter();lp.type='lowpass';lp.frequency.value=1400;lp.connect(g);g.connect(a.destination);[146.83,220,293.66,440].forEach((f,i)=>{const o=a.createOscillator();o.type=i%2?'triangle':'sawtooth';o.frequency.value=f;o.detune.value=(i-1.5)*5;o.connect(lp);o.start(t);o.stop(t+3.5)})}
+function showIntro(){
+ const d=document.createElement('div');d.id='intro';d.setAttribute('role','dialog');d.setAttribute('aria-label','Vulgata – johdanto');d.innerHTML=introHtml();document.body.appendChild(d);
+ const enter=()=>{if(d.classList.contains('out'))return;ac();if(S.snd){chant();[392,523.25,659.25,783.99].forEach((f,i)=>setTimeout(()=>bell(f,.17,3.2),i*320));setTimeout(()=>bell(196,.22,4),0)}d.classList.add('out');setTimeout(()=>d.remove(),950)};
+ d.addEventListener('click',e=>{if(e.target.closest('[data-intro="go"]'))return enter();if(!d.classList.contains('done'))d.classList.add('done')});
+ document.addEventListener('keydown',function k(e){if(!document.getElementById('intro')){document.removeEventListener('keydown',k);return}if(e.key==='Enter'||e.key===' '||e.key==='Escape'){e.preventDefault();d.classList.contains('done')||e.key!=='Escape'?enter():d.classList.add('done')}});
+ S.introDay=todayStr();save();
+}
+function wantIntro(){const m=S.intro||'day';if(m==='off')return false;if(m==='always')return true;return S.introDay!==todayStr()}
+
 render();
+if(wantIntro())showIntro();
 if('serviceWorker' in navigator&&location.protocol==='https:')navigator.serviceWorker.register('sw.js').catch(()=>{});
 </script>
 </body>
